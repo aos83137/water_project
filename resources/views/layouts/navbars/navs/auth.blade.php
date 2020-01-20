@@ -17,7 +17,7 @@
       <span class="navbar-toggler-bar navbar-kebab"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-      <form>
+      <form>{{-- 검색어 form --}}
         <div class="input-group no-border">
           <input type="text" value="" class="form-control" placeholder="Search...">
           <div class="input-group-append">
@@ -30,9 +30,9 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="#pablo">
-            <i class="now-ui-icons media-2_sound-wave"></i>
+            <i class="now-ui-icons sport_trophy"></i>
             <p>
-              <span class="d-lg-none d-md-block">{{ __("Stats") }}</span>
+              <span class="d-lg-none d-md-block">{{ __("랭킹 차트") }}</span>
             </p>
           </a>
         </li>
@@ -57,7 +57,7 @@
             </p>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __("My profile") }}</a>
+            <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __("마이페이지") }}</a>
             <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __("Edit profile") }}</a>
             <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault();

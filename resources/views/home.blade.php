@@ -1,8 +1,8 @@
 @extends('layouts.app', [
-    'namePage' => 'Dashboard',
+    'namePage' => 'home',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'home',
-    'backgroundImage' => asset('now') . "/img/bg14.jpg",
+    'backgroundImage' => asset('now') . "/img/bg15.jpg",
 ])
 
 @section('content')

@@ -3,24 +3,51 @@
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
   <div class="logo">
-    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-      {{ __('CT') }}
+    <a href="{{ route('home') }}" class="simple-text logo-mini">
+      {{ __('D2') }}
     </a>
-    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+    <a href="{{ route('home') }}" class="simple-text logo-normal">
+      {{ __('하루에 2리터') }}
     </a>
   </div>
   <div class="sidebar-wrapper" id="sidebar-wrapper">
     <ul class="nav">
       <li class="@if ($activePage == 'home') active @endif">
         <a href="{{ route('home') }}">
-          <i class="now-ui-icons design_app"></i>
-          <p>{{ __('Dashboard') }}</p>
+          <i class="now-ui-icons shopping_shop"></i>
+          <p>{{ __('홈') }}</p>
         </a>
       </li>
+      <li class = "@if ($activePage == 'maps') active @endif">
+        <a href="{{ route('page.index','maps') }}">
+          <i class="now-ui-icons business_chart-bar-32"></i>
+          <p>{{ __('섭취 보고서') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'maps') active @endif">
+        <a href="{{ route('page.index','maps') }}">
+          <i class="now-ui-icons ui-1_calendar-60"></i>
+          <p>{{ __('섭취 기록') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'maps') active @endif">
+        <a href="{{ route('page.index','maps') }}">
+          <i class="now-ui-icons ui-1_check"></i>
+          <p>{{ __('기록하기') }}</p>
+        </a>
+      </li>
+      <li class = "@if ($activePage == 'maps') active @endif">
+        <a href="{{ route('page.index','maps') }}">
+          <i class="now-ui-icons emoticons_satisfied"></i>
+          <p>{{ __('체중 보고서') }}</p>
+        </a>
+      </li>
+
+
+
       <li>
         <a data-toggle="collapse" href="#laravelExamples">
-            <i class="fab fa-laravel"></i>
+          <i class="fab fa-laravel"></i>
           <p>
             {{ __("Laravel Examples") }}
             <b class="caret"></b>

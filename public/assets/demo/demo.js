@@ -240,7 +240,7 @@ demo = {
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+                labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
                 datasets: [{
                     label: "Data",
                     borderColor: chartColor,
@@ -255,7 +255,7 @@ demo = {
                     fill: true,
                     backgroundColor: gradientFill,
                     borderWidth: 2,
-                    data: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 190, 95]
+                    data: [50, 150, 100, 190, 130, 90, 150, 160, 120, 140, 500, 95]
                 }]
             },
             options: {
