@@ -1,5 +1,9 @@
 @extends('layouts.app', [
-    'namePage' => 'Icons',
+    'namePage' => '기록하기',
     'class' => 'sidebar-mini',
-    'activePage' => 'icons',
+    'activePage' => 'drinking',
 ])
+@section('content')
+    <div class="panel-header panel-header-sm">
+    </div>
+@endsection

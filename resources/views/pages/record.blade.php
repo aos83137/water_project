@@ -1,5 +1,10 @@
 @extends('layouts.app', [
-    'namePage' => 'Icons',
+    'namePage' => '섭취 기록',
     'class' => 'sidebar-mini',
-    'activePage' => 'icons',
+    'activePage' => 'record',
 ])
+
+@section('content')
+    <div class="panel-header panel-header-sm">
+    </div>
+@endsection

@@ -18,26 +18,26 @@
           <p>{{ __('홈') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'maps') active @endif">
-        <a href="{{ route('page.index','maps') }}">
+      <li class = "@if ($activePage == 'chart') active @endif">
+        <a href="{{ route('page.index','chart') }}">
           <i class="now-ui-icons business_chart-bar-32"></i>
           <p>{{ __('섭취 보고서') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'maps') active @endif">
-        <a href="{{ route('page.index','maps') }}">
+      <li class = "@if ($activePage == 'record') active @endif">
+        <a href="{{ route('page.index','record') }}">
           <i class="now-ui-icons ui-1_calendar-60"></i>
           <p>{{ __('섭취 기록') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'maps') active @endif">
-        <a href="{{ route('page.index','maps') }}">
+      <li class = "@if ($activePage == 'drinking') active @endif">
+        <a href="{{ route('page.index','drinking') }}">
           <i class="now-ui-icons ui-1_check"></i>
           <p>{{ __('기록하기') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'maps') active @endif">
-        <a href="{{ route('page.index','maps') }}">
+      <li class = "@if ($activePage == 'weight') active @endif">
+        <a href="{{ route('page.index','weight') }}">
           <i class="now-ui-icons emoticons_satisfied"></i>
           <p>{{ __('체중 보고서') }}</p>
         </a>
