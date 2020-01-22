@@ -15,15 +15,9 @@
                   <h5 class="card-category">{{ auth()->user()->name }}님</h5>
                   <h4 class="card-title">1월 체중 그래프.</h4>
                   <div class="dropdown">
-                    <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                    <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="modal" data-target="#myModal">
                       <i class="now-ui-icons ui-1_simple-add"></i>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                      <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                    </div>
                   </div>
                 </div>
                 <div class="card-body">
@@ -70,8 +64,25 @@
             </div>
           </div>
         </div>
-        
       </div>
+
+  <div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">모달 창 타이틀</h4> <!-- 사용자 지정 부분② : 타이틀 -->
+        </div>
+        <div class="modal-body">
+          <p>여기에 필요한 텍스트 메시지 넣기</p> <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
 @push('js')
   <script>

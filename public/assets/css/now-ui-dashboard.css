@@ -1294,6 +1294,14 @@ fieldset[disabled] .btn-link.active {
     padding: 10px 22px;
 }
 
+.btn-round-small {
+    border-width: 1px;
+    border-radius: 30px;
+    padding-right: 3px;
+    padding-left: 3px;
+    margin: 3px;
+}
+
 .no-caret.dropdown-toggle::after {
     display: none;
 }
