@@ -30,8 +30,298 @@ demo = {
             $page.append(image_container);
         }
     },
+    yearChart: function() {
+        chartColor = "rgba(0, 0, 0, 0.8)";
+        backChartColor = "rgba(255, 255, 255, 0.8)";
 
-    initDocChart: function() {
+        var ctx = document.getElementById('yearChart').getContext("2d");
+
+        var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, '#80b6f4');
+        gradientStroke.addColorStop(1, backChartColor);
+
+        var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+        gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+        gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+
+        labels = [];
+        datas = [];
+        for (var i=0;i<12;i++){
+            labels[i] = ""+(i+1)+"월";
+            datas[i] = Math.floor(Math.random() * 10)+77;
+        }
+        
+        dataMin = Math.min.apply(null, datas);
+        dataMax = Math.max.apply(null, datas);
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Data",
+                    borderColor: chartColor,
+                    pointBorderColor: chartColor,
+                    pointBackgroundColor: "#1e3d60",
+                    pointHoverBackgroundColor: "#1e3d60",
+                    pointHoverBorderColor: chartColor,
+                    pointBorderWidth: 0,
+                    pointHoverRadius: 9,
+                    pointHoverBorderWidth: 0,
+                    pointRadius: 2,
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderWidth: 2,
+                    data: datas
+                }]
+            },
+            options: {
+                layout: {
+                    padding: {
+                        left: 20,
+                        right: 20,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: '#000',
+                    titleFontColor: '#333',
+                    bodyFontColor: '#666',
+                    bodySpacing: 4,
+                    xPadding: 12,
+                    mode: "nearest",
+                    intersect: 0,
+                    position: "nearest"
+                },
+                legend: {
+                    // position: "bottom",
+                    fillStyle: "#FFF",
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.4)",
+                            fontStyle: "bold",
+                            stepSize:10,
+                            min : Math.round((dataMin-30)/10)*10,
+                            max : Math.round((dataMax+10)/10)*10,
+                            beginAtZero: true,
+                            maxTicksLimit: 5,
+                            padding: 10
+                        },
+                        gridLines: {
+                            drawTicks: true,
+                            drawBorder: false,
+                            display: true,
+                            color: "rgba(0,0,0,0.1)",
+                            zeroLineColor: "transparent"
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent",
+                            display: false,
+                        },
+                        ticks: {
+                            padding: 10,
+                            fontColor: "rgba(0,0,0,0.4)",
+                            fontStyle: "bold"
+                        }
+                    }]
+                }
+            }
+        });
+
+        var ctx = document.getElementById('bigDashboardMonthChart').getContext("2d");
+
+        var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, '#80b6f4');
+        gradientStroke.addColorStop(1, backChartColor);
+
+        var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+        gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+        gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+                datasets: [{
+                    label: "Data",
+                    borderColor: backChartColor,
+                    pointBorderColor: backChartColor,
+                    pointBackgroundColor: "#1e3d60",
+                    pointHoverBackgroundColor: "#1e3d60",
+                    pointHoverBorderColor: backChartColor,
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 7,
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 5,
+                    fill: true,
+                    backgroundColor: gradientFill,
+                    borderWidth: 2,
+                    data: [90, 97, 80, 50, 55, 95, 90, 86,096, 94, 100, 95]
+                }]
+            },
+            options: {
+                layout: {
+                    padding: {
+                        left: 20,
+                        right: 20,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: '#fff',
+                    titleFontColor: '#333',
+                    bodyFontColor: '#666',
+                    bodySpacing: 4,
+                    xPadding: 12,
+                    mode: "nearest",
+                    intersect: 0,
+                    position: "nearest"
+                },
+                legend: {
+                    position: "bottom",
+                    fillStyle: "#FFF",
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(255,255,255,0.4)",
+                            fontStyle: "bold",
+                            beginAtZero: true,
+                            maxTicksLimit: 5,
+                            padding: 10
+                        },
+                        gridLines: {
+                            drawTicks: true,
+                            drawBorder: false,
+                            display: true,
+                            color: "rgba(255,255,255,0.1)",
+                            zeroLineColor: "transparent"
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent",
+                            display: false,
+
+                        },
+                        ticks: {
+                            padding: 10,
+                            fontColor: "rgba(255,255,255,0.4)",
+                            fontStyle: "bold"
+                        }
+                    }]
+                }
+            }
+        });
+
+// daychart부분
+        var ctx = document.getElementById('dayChart').getContext("2d");
+
+        var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+        gradientStroke.addColorStop(0, '#6dd5ed');
+        gradientStroke.addColorStop(1, '#2193b0');
+
+        var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
+        gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+        gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Data",
+                    borderColor: gradientStroke,
+                    pointBorderColor: chartColor,
+                    pointBackgroundColor: "#1e3d60",
+                    pointHoverBackgroundColor: "#1e3d60",
+                    pointHoverBorderColor: chartColor,
+                    pointBorderWidth: 0,
+                    pointHoverRadius: 9,
+                    pointHoverBorderWidth: 0,
+                    pointRadius: 2,
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderWidth: 2,
+                    data: datas
+                }]
+            },
+            options: {
+                layout: {
+                    padding: {
+                        left: 20,
+                        right: 20,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                maintainAspectRatio: false,
+                tooltips: {
+                    backgroundColor: '#000',
+                    titleFontColor: '#333',
+                    bodyFontColor: '#666',
+                    bodySpacing: 4,
+                    xPadding: 12,
+                    mode: "nearest",
+                    intersect: 0,
+                    position: "nearest"
+                },
+                legend: {
+                    // position: "bottom",
+                    fillStyle: "#FFF",
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "rgba(0,0,0,0.4)",
+                            fontStyle: "bold",
+                            stepSize:10,
+                            min : Math.round((dataMin-30)/10)*10,
+                            max : Math.round((dataMax+10)/10)*10,
+                            beginAtZero: true,
+                            maxTicksLimit: 5,
+                            padding: 10
+                        },
+                        gridLines: {
+                            drawTicks: true,
+                            drawBorder: false,
+                            display: true,
+                            color: "rgba(0,0,0,0.1)",
+                            zeroLineColor: "transparent"
+                        }
+
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            zeroLineColor: "transparent",
+                            display: false,
+                        },
+                        ticks: {
+                            padding: 10,
+                            fontColor: "rgba(0,0,0,0.4)",
+                            fontStyle: "bold"
+                        }
+                    }]
+                }
+            }
+        });
+        
+    }
+    ,
+    weightChart: function() {
         chartColor = "rgba(0, 0, 0, 0.8)";
         
         var ctx = document.getElementById('weightChart').getContext("2d");
