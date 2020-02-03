@@ -15,12 +15,6 @@
       <li class="@if ($activePage == 'home') active @endif">
         <a href="{{ route('home') }}">
           <i class="now-ui-icons shopping_shop"></i>
-          <p>{{ __('홈') }}</p>
-        </a>
-      </li>
-      <li class = "@if ($activePage == 'chart') active @endif">
-        <a href="{{ route('page.index','chart') }}">
-          <i class="now-ui-icons business_chart-bar-32"></i>
           <p>{{ __('섭취 보고서') }}</p>
         </a>
       </li>
@@ -75,12 +69,6 @@
           <p>{{ __('Icons') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'maps') active @endif">
-        <a href="{{ route('page.index','maps') }}">
-          <i class="now-ui-icons location_map-big"></i>
-          <p>{{ __('Maps') }}</p>
-        </a>
-      </li>
       <li class = " @if ($activePage == 'notifications') active @endif">
         <a href="{{ route('page.index','notifications') }}">
           <i class="now-ui-icons ui-1_bell-53"></i>
@@ -99,12 +87,7 @@
           <p>{{ __('Typography') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'upgrade') active @endif active-pro">
-        <a href="{{ route('page.index','upgrade') }}">
-          <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-          <p>{{ __('Upgrade to PRO') }}</p>
-        </a>
-      </li>
+
     </ul>
   </div>
 </div>

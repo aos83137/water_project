@@ -1,283 +1,109 @@
 @extends('layouts.app', [
-    'namePage' => 'home',
-    'class' => 'login-page sidebar-mini ',
+    'namePage' => '月 달성률 차트',
+    'class' => 'sidebar-mini',
     'activePage' => 'home',
-    'backgroundImage' => asset('now') . "/img/bg15.jpg",
 ])
-
 @section('content')
-  <div class="panel-header panel-header-lg">
-    <canvas id="bigDashboardChart"></canvas>
-  </div>
-  <div class="content">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card card-chart">
-          <div class="card-header">
-            <h5 class="card-category">Global Sales</h5>
-            <h4 class="card-title">Shipped Products</h4>
-            <div class="dropdown">
-              <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                <i class="now-ui-icons loader_gear"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item text-danger" href="#">Remove Data</a>
+<div class="panel-header panel-header-lg">
+    <canvas id="bigDashboardMonthChart"></canvas>
+</div>
+    <div class="content">
+        <div class="row">
+          <div class="col-md-9">
+              <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">{{ auth()->user()->name }}님</h5>
+                    <h4 class="card-title">하루 섭취량.</h4>
+                    <div class="dropdown">
+                      <button type="button" onclick="deleteWaterData()" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="modal" data-target="#myModal">
+                        <i class="now-ui-icons ui-1_simple-add"></i>
+                      </button>
+                    </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 35.6%;" aria-valuenow="35.6" aria-valuemin="0" aria-valuemax="100">1000 / 2805ml</div>
+                      </div>
+                    </div>
               </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="chart-area">
-              <canvas id="lineChartExample"></canvas>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card card-chart">
-          <div class="card-header">
-            <h5 class="card-category">2018 Sales</h5>
-            <h4 class="card-title">All products</h4>
-            <div class="dropdown">
-              <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                <i class="now-ui-icons loader_gear"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <a class="dropdown-item text-danger" href="#">Remove Data</a>
-              </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-chart">
+                  <div class="card-header">
+                      <h5 class="card-category">{{ auth()->user()->name }}님</h5>
+                      <h4 class="card-title">年 달성률 차트.</h4>
+                      </div>
+                      <div class="card-body">
+                          <div class="chart-area">
+                          <canvas id="yearChart"></canvas>
+                          </div>
+                      </div>
+                </div>
             </div>
           </div>
-          <div class="card-body">
-            <div class="chart-area">
-              <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card card-chart">
-          <div class="card-header">
-            <h5 class="card-category">Email Statistics</h5>
-            <h4 class="card-title">24 Hours Performance</h4>
-          </div>
-          <div class="card-body">
-            <div class="chart-area">
-              <canvas id="barChartSimpleGradientsNumbers"></canvas>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card  card-tasks">
-          <div class="card-header ">
-            <h5 class="card-category">Backend development</h5>
-            <h4 class="card-title">Tasks</h4>
-          </div>
-          <div class="card-body ">
-            <div class="table-full-width table-responsive">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" checked>
-                          <span class="form-check-sign"></span>
-                        </label>
-                      </div>
-                    </td>
-                    <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
-                    <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </button>
-                      <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox">
-                          <span class="form-check-sign"></span>
-                        </label>
-                      </div>
-                    </td>
-                    <td class="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                    <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </button>
-                      <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" checked>
-                          <span class="form-check-sign"></span>
-                        </label>
-                      </div>
-                    </td>
-                    <td class="text-left">Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                    </td>
-                    <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </button>
-                      <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+
+    {{-- modal --}}
+    <div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-          </div>
-          <div class="card-footer ">
-            <hr>
-            <div class="stats">
-              <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+            <div class="modal-body">
+                <p>마신 물의 양을 입력합시다.</p>
+                <div class="form-group">
+                  <label for="waterData" class="col-form-label" id="waterData">얼마나 마셨나요?</label>
+                  <input type="text" class="form-control" id="waterData">
+                </div>
             </div>
-          </div>
+            <div class="modal-footer">
+              <button type="button" onclick="addDataWater()" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-category">All Persons List</h5>
-            <h4 class="card-title"> Employees Stats</h4>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead class=" text-primary">
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    Country
-                  </th>
-                  <th>
-                    City
-                  </th>
-                  <th class="text-right">
-                    Salary
-                  </th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      Dakota Rice
-                    </td>
-                    <td>
-                      Niger
-                    </td>
-                    <td>
-                      Oud-Turnhout
-                    </td>
-                    <td class="text-right">
-                      $36,738
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Minerva Hooper
-                    </td>
-                    <td>
-                      Curaçao
-                    </td>
-                    <td>
-                      Sinaai-Waas
-                    </td>
-                    <td class="text-right">
-                      $23,789
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sage Rodriguez
-                    </td>
-                    <td>
-                      Netherlands
-                    </td>
-                    <td>
-                      Baileux
-                    </td>
-                    <td class="text-right">
-                      $56,142
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Doris Greene
-                    </td>
-                    <td>
-                      Malawi
-                    </td>
-                    <td>
-                      Feldkirchen in Kärnten
-                    </td>
-                    <td class="text-right">
-                      $63,542
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Mason Porter
-                    </td>
-                    <td>
-                      Chile
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-right">
-                      $78,615
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+
+<script>
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+      }
+  });
+  function deleteWaterData(){
+    $('#deleteWaterData').val('222');
+  }
+  function addDataWater(){
+    waterData = $('#waterData').val();
+    if(waterData!=''){
+      $.ajax({        
+        type:'DELETE',
+        url:'/comments/'+id ,
+        dataType:"html",
+        contentType: false,
+        processData: false,
+      }).then(function(data){
+          console.log(data);
+      });
+    }
+  }
+</script>
 @endsection
 
 @push('js')
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
+      demo.yearChart();
     });
   </script>
 @endpush
+
+@

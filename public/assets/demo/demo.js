@@ -37,8 +37,8 @@ demo = {
         var ctx = document.getElementById('yearChart').getContext("2d");
 
         var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, '#80b6f4');
-        gradientStroke.addColorStop(1, backChartColor);
+        gradientStroke.addColorStop(0, '#6dd5ed');
+        gradientStroke.addColorStop(1, '#2193b0');
 
         var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
         gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
@@ -55,12 +55,12 @@ demo = {
         dataMax = Math.max.apply(null, datas);
 
         var myChart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: "Data",
-                    borderColor: chartColor,
+                    label: "달성률",
+                    borderColor: gradientStroke,
                     pointBorderColor: chartColor,
                     pointBackgroundColor: "#1e3d60",
                     pointHoverBackgroundColor: "#1e3d60",
