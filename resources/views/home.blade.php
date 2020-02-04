@@ -15,7 +15,7 @@
                     <h5 class="card-category">{{ auth()->user()->name }}님</h5>
                     <h4 class="card-title">하루 섭취량.</h4>
                     <div class="dropdown">
-                      <button type="button" onclick="deleteWaterData()" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="modal" data-target="#myModal">
+                      <button type="button" onclick='resetInput()' class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="modal" data-target="#myModal">
                         <i class="now-ui-icons ui-1_simple-add"></i>
                       </button>
                     </div>
@@ -59,44 +59,45 @@
             <div class="modal-body">
                 <p>마신 물의 양을 입력합시다.</p>
                 <div class="form-group">
-                  <label for="waterData" class="col-form-label" id="waterData">얼마나 마셨나요?</label>
-                  <input type="text" class="form-control" id="waterData">
+                  <label for="waterData" class="col-form-label">얼마나 마셨나요?</label>
+                  <input type="text" name="water" class="form-control" id="waterData">
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" onclick="addDataWater()" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" onclick="{{ route('water.store') }}" class="btn btn-primary">저장</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
             </div>
         </div>
     </div>
 </div>
-
+@endsection
+@section('script')
 <script>
-  $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-      }
-  });
-  function deleteWaterData(){
-    $('#deleteWaterData').val('222');
+  function resetInput(){
+    $('#waterData').val('');
   }
   function addDataWater(){
-    waterData = $('#waterData').val();
-    if(waterData!=''){
-      $.ajax({        
-        type:'DELETE',
-        url:'/comments/'+id ,
-        dataType:"html",
-        contentType: false,
-        processData: false,
-      }).then(function(data){
-          console.log(data);
-      });
-    }
+
   }
+  // function addDataWater(){
+    // waterData = $('#waterData').val();
+    // if(waterData!=''){
+    //   $.ajax({        
+    //     method:'POST',
+    //     url:'/water' ,
+    //     data:{
+    //       waterData:waterData
+    //     }
+    //     dataType:"html",
+    //     contentType: false,
+    //     processData: false,
+    //   }).then(function(waterData){
+    //       console.log(waterData);
+    //   });
+    // }
+  // }
 </script>
 @endsection
-
 @push('js')
   <script>
     $(document).ready(function() {
@@ -106,4 +107,3 @@
   </script>
 @endpush
 
-@

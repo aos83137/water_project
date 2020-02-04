@@ -61,6 +61,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            
             <div class="modal-body">
                 <p>Modal body text goes here.</p>
                 <form>

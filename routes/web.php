@@ -26,3 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
 });
 
+Route::resource('water', 'WaterController');
+
+Route::resource('weight', 'WeightController');

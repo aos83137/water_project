@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function waters(){
+        return $this->hasMany(Water::class);
+    }
+
+    public function weights(){
+        return $this->hasMany(Weight::class);
+    }
 }
